@@ -7,7 +7,7 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
-      render json: @appointment
+      render json: Appointment.order('appt_time ASC')
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end
